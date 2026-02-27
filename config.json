@@ -1,0 +1,84 @@
+{
+  "GREENHOUSE_COMPANIES": [
+    "stripe",
+    "roblox",
+    "anthropic",
+    "instacart",
+    "databricks",
+    "affirm",
+    "doordashusa",
+    "sofi",
+    "capitalrx",
+    "figma",
+    "cloudflare",
+    "duolingo",
+    "calibratecareers",
+    "dropbox",
+    "pinterestjobadvertisements",
+    "coinbase",
+    "discord",
+    "robinhood",
+    "gusto",
+    "verkada",
+    "zapier",
+    "webflow",
+    "brex",
+    "scaleai"
+  ],
+  "WORKDAY_CONFIG": [
+    {
+      "name": "Barclays",
+      "sub": "barclays",
+      "id": "External_Career_Site_Barclays",
+      "server": "wd3"
+    },
+    {
+      "name": "NVIDIA",
+      "sub": "nvidia",
+      "id": "NVIDIAExternalCareerSite",
+      "server": "wd5"
+    },
+    {
+      "name": "Salesforce",
+      "sub": "salesforce",
+      "id": "External_Career_Site",
+      "server": "wd12"
+    },
+    {
+      "name": "T-Mobile",
+      "sub": "tmobile",
+      "id": "External",
+      "server": "wd1"
+    },
+    {
+      "name": "Adobe",
+      "sub": "adobe",
+      "id": "external_experienced",
+      "server": "wd5"
+    },
+    {
+      "name": "WellsFargoJobs",
+      "sub": "WellsFargo",
+      "id": "External_Career_Site",
+      "server": "wd1"
+    },
+    {
+      "name": "Unum",
+      "sub": "unum",
+      "id": "External",
+      "server": "wd1"
+    },
+    {
+      "name": "Intel",
+      "sub": "intel",
+      "id": "External",
+      "server": "wd1"
+    },
+    {
+      "name": "Target",
+      "sub": "target",
+      "id": "targetcareers",
+      "server": "wd5"
+    }
+  ]
+}
