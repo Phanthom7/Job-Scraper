@@ -63,22 +63,39 @@ def fetch_workday(source):
         return []
 
 def check_experience(description):
-    """Returns False if the job requires > 2 years of experience or a PhD."""
     desc = description.lower()
     
-    # 1. PhD or internship Check
-    if "phd" in desc:
+    # 1. Seniority Deal-breakers
+    if any(word in desc for word in ["phd", "p.h.d", "staff analyst", "principal", "graduating"]):
         return False
         
-    # 2. Years of Experience Check
-    # Regex looks for: [number] [space] [year/years] [space] [of]
-    # Matches: "3 years of", "5+ years of", "10 years of"
-    experience_matches = re.findall(r'(\d+)\s*[\+]?\s*years?', desc)
+    # 2. Robust Experience Regex
+    # This looks for a number, then allows up to 5 optional words, then 'years'
+    # Catches: "8+ years", "8 years of experience", "5-10 years in manufacturing"
+    patterns = [
+        r'\d{1,2}[\+\-]?\s*(?:\w+\s+){0,5}years?', 
+        r'(?:one|two|three|four|five|six|seven|eight|nine|ten)\s*(?:\w+\s+){0,5}years?'
+    ]
     
-    for match in experience_matches:
-        if int(match) > 2:
-            return False
+    num_map = {"one":1, "two":2, "three":3, "four":4, "five":5, "six":6, "seven":7, "eight":8, "nine":9, "ten":10}
+
+    for pattern in patterns:
+        matches = re.findall(pattern, desc)
+        for m in matches:
+            # Extract just the digits from the match (e.g., "8+ years" -> "8")
+            digit_match = re.search(r'\d{1,2}', m)
             
+            if digit_match:
+                val = int(digit_match.group())
+            else:
+                # Handle written words ("eight years" -> 8)
+                first_word = m.split()[0]
+                val = num_map.get(first_word, 0)
+            
+            # THE FILTER: If any requirement > 2 years is found, reject the role
+            if val > 2:
+                return False
+                
     return True
 
 @retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=2, max=10))
@@ -164,7 +181,7 @@ if __name__ == "__main__":
         if re.match(r'\d{4}-\d{2}-\d{2}', posted_text):
             try:
                 job_date = pd.to_datetime(posted_text).date()
-                if (today_date - job_date).days <= 30: keep_job = True
+                if (today_date - job_date).days <= 14: keep_job = True
             except: pass
         elif any(x in posted_text for x in ["today", "yesterday", "recent", "1 day"]):
             keep_job = True

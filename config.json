@@ -60,9 +60,9 @@
       "server": "wd5"
     },
     {
-      "name": "WellsFargoJobs",
-      "sub": "WellsFargo",
-      "id": "External_Career_Site",
+      "name": "Wells Fargo",
+      "sub": "wf",
+      "id": "WellsFargoJobs",
       "server": "wd1"
     },
     {
@@ -82,6 +82,18 @@
       "sub": "target",
       "id": "targetcareers",
       "server": "wd5"
+    },
+    {
+      "name": "Johnson & Johnson",
+      "sub": "jj",
+      "server": "wd5",
+      "id": "JJ"
+    },
+    {
+      "name": "J Crew",
+      "sub": "jcrew",
+      "server": "wd1",
+      "id": "MadewellCareers"
     }
   ]
 }

@@ -1,0 +1,4 @@
+{
+    "INCLUDE_ROLES": ["analyst", "data analyst", "analytics", "data scientist", "data engineer", "business analyst", "tableau", "power bi", "business intelligence","associate","research"],
+    "EXCLUDE_ROLES": ["senior", "sr", "lead", "manager", "vp", "director", "staff", "principal", "phd", "intern"]
+}
